@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "0aeb348f2fd5c8f0d33cd471258669b0"
+name = "timer-app"
+handle = "timer-app-14"
+application_url = "https://saying-rp-yamaha-fallen.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "in10sitydevstore.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://saying-rp-yamaha-fallen.trycloudflare.com/auth/callback",
+  "https://saying-rp-yamaha-fallen.trycloudflare.com/auth/shopify/callback",
+  "https://saying-rp-yamaha-fallen.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false
