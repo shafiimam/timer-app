@@ -79,10 +79,7 @@ export default function NewTimerPage() {
                 <Button
                   size="large"
                   fullWidth
-                  onClick={() => {
-                    console.log("navigating to", timer.link);
-                    navigate(timer.link);
-                  }}
+                  onClick={() => navigate(timer.link)}
                   variant="primary"
                 >
                   Select This Timer Type

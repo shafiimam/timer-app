@@ -15,17 +15,17 @@ type TimerLabel = {
 export type Translation = {
   language: keyof typeof SupportedTranslationLanguage;
   title: string;
-  subHeadig: string;
+  subHeading: string;
   timerLabel: TimerLabel;
 };
 
 type TimerTimeLine = {
-  date: Date;
+  date?: string;
   hour: Number;
   minute: Number;
-  dateAMPM: "AM" | "PM";
+  dateAMPM?: "AM" | "PM";
 };
-type TimerCardDesign = {
+export type TimerCardDesign = {
   cardBackgroundColor?: string;
   isGradiantBackground: boolean;
   cardBackgroundGradientStart: string;
@@ -34,11 +34,18 @@ type TimerCardDesign = {
   borderRadius: Number;
   borderSize: Number;
   borderColor: string;
-  spacingTop: Number;
-  spacingBottom: Number;
-  spacingLeft: Number;
-  spacingRight: Number;
+  insideTop: Number;
+  insideBottom: Number;
+  outsideTop: Number;
+  outsideBottom: Number;
+  [key: string]: string | boolean | Number | undefined;
 };
+
+export type TimerCardDesignKeyType =
+  | "borderColor"
+  | "cardBackgroundGradientStart"
+  | "cardBackgroundGradientEnd"
+  | "cardBackgroundColor";
 
 type TimerTypoGraphy = {
   font: string;
@@ -53,8 +60,8 @@ type TimerTypoGraphy = {
   showCloseIcon?: boolean;
   closeIconColor?: string;
 };
-type TimerStyle = {
-  template: [keyof typeof TimerTemplate];
+export type TimerStyle = {
+  template: keyof typeof TimerTemplate;
   position?: string;
   cardStyle: TimerCardDesign;
   typoGraphy: TimerTypoGraphy;
@@ -77,11 +84,8 @@ export type IProductPageTimer = {
   title: string;
   subHeading: string;
   timerLabel: TimerLabel;
-  translation: Array<Translation> | [];
+  translations: Array<Translation> | [];
   timerType: TimerType;
-  startNow: boolean;
-  startDate: TimerTimeLine;
-  endDate: TimerTimeLine;
   onceEnds: keyof typeof OnceEndsTimer;
   style: TimerStyle;
   showOnAllProducts: boolean;
@@ -89,4 +93,27 @@ export type IProductPageTimer = {
   productTagsSelection: Array<string> | [];
   showOnCustomPosition: boolean;
   geoLocationSetting: GeoLocationSetting;
+
+  fixedMinutesTimer: {
+    duration: number;
+  };
+  countDownToDate: {
+    startNow: boolean;
+    startDate: TimerTimeLine;
+    endDate: TimerTimeLine;
+  };
+  dailyRecurring: {
+    days: Array<number>;
+    startTime: TimerTimeLine;
+    endTime: TimerTimeLine;
+    startToday: boolean;
+    neverEnds: boolean;
+  };
+};
+
+export type TimeLineFnReturnType = {
+  date?: { updateKey: string; value: any };
+  hour: { updateKey: string; value: any };
+  minute: { updateKey: string; value: any };
+  dateAMPM: { updateKey: string; value: any };
 };

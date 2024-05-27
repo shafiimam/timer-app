@@ -22,12 +22,13 @@ model Session {
 }
 
 model TimerLabel {
-  id     String @id @default(uuid())
-  day    String @default("Days")
-  hour   String @default("Hrs")
-  minute String @default("Mins")
-  second String @default("Secs")
-  Timer  Timer?
+  id           String @id @default(uuid())
+  day          String @default("Days")
+  hour         String @default("Hrs")
+  minute       String @default("Mins")
+  second       String @default("Secs")
+  timerLabelId String @unique
+  Timer        Timer? @relation(fields: [timerLabelId], references: [id])
 }
 
 model Translation {
@@ -54,7 +55,6 @@ model CountDownToDateTimerType {
 model FixedMinTimerType {
   id               String  @id @default(uuid())
   duration         Int
-  onceEnds         String? // options: "unpublish", "showCustomTitle", "donothing"
   customTitle      String?
   customSubHeading String?
   timer            Timer   @relation(fields: [timerId], references: [id])
@@ -72,7 +72,6 @@ model DailyRecurringTimerType {
   neverEnds        Boolean
   startDate        DateTime
   endDate          DateTime
-  onceEnds         String? // options: "unpublish", "showCustomTitle", "donothing"
   timerId          String   @unique
   timer            Timer    @relation(fields: [timerId], references: [id])
 }
@@ -102,7 +101,7 @@ model TimerStyle {
   spacingBottom               Int     @default(20)
   spacingLeft                 Int     @default(20)
   spacingRight                Int     @default(20)
-  font                        String  @default("default") //option "default, Helvetica, Tahoma, Trebuchet MS, Georgia, Garamond, serif"
+  font                        String  @default("default")
   titleSize                   Int     @default(20)
   titleColor                  String  @default("#000000")
   subHeadingSize              Int     @default(14)
@@ -112,7 +111,8 @@ model TimerStyle {
   timerLegendSize             Int     @default(14)
   timerLegendColor            String  @default("#000000")
   closeIconColor              String  @default("#000000")
-  Timer                       Timer[]
+  timerStyleId                String  @unique
+  timer                       Timer   @relation(fields: [timerStyleId], references: [id])
 }
 
 model TimerPlacementType {
@@ -132,26 +132,28 @@ model TimerPlacementType {
   selectedCollections           String[]
   showOnCustomPosition          Boolean
   showOnPasswordPage            Boolean
+  timerPlacementTypeId          String   @unique
+  Timer                         Timer?   @relation(fields: [timerPlacementTypeId], references: [id])
 }
 
 model Timer {
-  id                   String                    @id @default(uuid())
-  type                 String
-  name                 String
-  title                String
-  subHeadig            String
-  timerLabelId         String                    @unique
-  timerLabel           TimerLabel                @relation(fields: [timerLabelId], references: [id])
-  translationIds       String[]
-  translation          Translation[]
-  timerType            String                    @default("countDownToDate")
-  countdownToDateTimer CountDownToDateTimerType?
-  FixedMinTimer        FixedMinTimerType?
-  dailyRecurringTimer  DailyRecurringTimerType?
-  cartPageTimer        CartPageTimerType?
-  timerStyleId         String                    @unique
-  timerStyle           TimerStyle                @relation(fields: [timerStyleId], references: [id])
-  timerPlacement       String                    @default("top")
-  callToAction         String // option "whole, button ,none"
-  closeIcon            Boolean
+  id                    String                    @id @default(uuid())
+  type                  String
+  name                  String
+  title                 String
+  subHeadig             String
+  timerLabel            TimerLabel?
+  translations          Translation[]
+  timerType             String                    @default("countDownToDate")
+  countdownToDateTimer  CountDownToDateTimerType?
+  FixedMinTimer         FixedMinTimerType?
+  dailyRecurringTimer   DailyRecurringTimerType?
+  cartPageTimer         CartPageTimerType?
+  timerStyle            TimerStyle?
+  timerPlacement        String                    @default("top")
+  callToAction          String // option "whole, button ,none"
+  closeIcon             Boolean
+  timerPlacementSetting TimerPlacementType?
+  onceEnds              String? // options: "unpublish", "showCustomTitle", "donothing"
+  timerPlacementTypeId  String
 }

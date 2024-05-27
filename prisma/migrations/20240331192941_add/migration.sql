@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Session" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "shop" TEXT NOT NULL,
     "state" TEXT NOT NULL,
     "isOnline" BOOLEAN NOT NULL DEFAULT false,
@@ -9,34 +9,34 @@ CREATE TABLE "Session" (
     "accessToken" TEXT NOT NULL,
     "userId" BIGINT,
 
-    CONSTRAINT "Session_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Session_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "TimerLabel" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "day" TEXT NOT NULL DEFAULT 'Days',
     "hour" TEXT NOT NULL DEFAULT 'Hrs',
     "minute" TEXT NOT NULL DEFAULT 'Mins',
     "second" TEXT NOT NULL DEFAULT 'Secs',
 
-    CONSTRAINT "TimerLabel_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "TimerLabel_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "Translation" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "language" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "subHeadig" TEXT NOT NULL,
     "timerID" TEXT,
 
-    CONSTRAINT "Translation_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Translation_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "CountDownToDateTimerType" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "startRightNow" BOOLEAN NOT NULL,
     "startDate" TIMESTAMP(3),
     "endDate" TIMESTAMP(3),
@@ -45,24 +45,24 @@ CREATE TABLE "CountDownToDateTimerType" (
     "customSubHeading" TEXT,
     "timerId" TEXT NOT NULL,
 
-    CONSTRAINT "CountDownToDateTimerType_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "CountDownToDateTimerType_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "FixedMinTimerType" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "duration" INTEGER NOT NULL,
     "onceEnds" TEXT,
     "customTitle" TEXT,
     "customSubHeading" TEXT,
     "timerId" TEXT NOT NULL,
 
-    CONSTRAINT "FixedMinTimerType_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "FixedMinTimerType_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "DailyRecurringTimerType" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "daysOfWeek" TEXT[],
     "dailyStartTime" TIMESTAMP(3) NOT NULL,
     "dailyEndTime" TIMESTAMP(3) NOT NULL,
@@ -75,22 +75,22 @@ CREATE TABLE "DailyRecurringTimerType" (
     "onceEnds" TEXT,
     "timerId" TEXT NOT NULL,
 
-    CONSTRAINT "DailyRecurringTimerType_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "DailyRecurringTimerType_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "CartPageTimerType" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "timerId" TEXT NOT NULL,
     "minutes" INTEGER NOT NULL DEFAULT 10,
     "onceEnds" TEXT DEFAULT 'repeatTimer',
 
-    CONSTRAINT "CartPageTimerType_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "CartPageTimerType_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
-CREATE TABLE "TimerDesign" (
-    "id" TEXT NOT NULL,
+CREATE TABLE "TimerStyle" (
+    "_id" TEXT NOT NULL,
     "template" TEXT NOT NULL DEFAULT 'custom',
     "position" TEXT NOT NULL DEFAULT 'top',
     "stickyTimer" BOOLEAN NOT NULL DEFAULT false,
@@ -111,18 +111,18 @@ CREATE TABLE "TimerDesign" (
     "titleColor" TEXT NOT NULL DEFAULT '#000000',
     "subHeadingSize" INTEGER NOT NULL DEFAULT 14,
     "subHeadingColor" TEXT NOT NULL DEFAULT '#000000',
-    "timeSize" INTEGER NOT NULL DEFAULT 30,
+    "timerSize" INTEGER NOT NULL DEFAULT 30,
     "timerColor" TEXT NOT NULL DEFAULT '#000000',
     "timerLegendSize" INTEGER NOT NULL DEFAULT 14,
     "timerLegendColor" TEXT NOT NULL DEFAULT '#000000',
     "closeIconColor" TEXT NOT NULL DEFAULT '#000000',
 
-    CONSTRAINT "TimerDesign_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "TimerStyle_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "TimerPlacementType" (
-    "id" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
     "timerType" TEXT NOT NULL,
     "selectedProducts" TEXT[],
     "selectedProductTags" TEXT[],
@@ -139,26 +139,25 @@ CREATE TABLE "TimerPlacementType" (
     "showOnCustomPosition" BOOLEAN NOT NULL,
     "showOnPasswordPage" BOOLEAN NOT NULL,
 
-    CONSTRAINT "TimerPlacementType_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "TimerPlacementType_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateTable
 CREATE TABLE "Timer" (
-    "id" TEXT NOT NULL,
-    "timer_type" TEXT NOT NULL,
+    "_id" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "subHeadig" TEXT NOT NULL,
     "timerLabelId" TEXT NOT NULL,
     "translationIds" TEXT[],
     "timerType" TEXT NOT NULL DEFAULT 'countDownToDate',
-    "type" TEXT NOT NULL,
-    "timerDesignId" TEXT NOT NULL,
+    "timerStyleId" TEXT NOT NULL,
     "timerPlacement" TEXT NOT NULL DEFAULT 'top',
     "callToAction" TEXT NOT NULL,
     "closeIcon" BOOLEAN NOT NULL,
 
-    CONSTRAINT "Timer_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Timer_pkey" PRIMARY KEY ("_id")
 );
 
 -- CreateIndex
@@ -180,25 +179,25 @@ CREATE UNIQUE INDEX "CartPageTimerType_timerId_key" ON "CartPageTimerType"("time
 CREATE UNIQUE INDEX "Timer_timerLabelId_key" ON "Timer"("timerLabelId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Timer_timerDesignId_key" ON "Timer"("timerDesignId");
+CREATE UNIQUE INDEX "Timer_timerStyleId_key" ON "Timer"("timerStyleId");
 
 -- AddForeignKey
-ALTER TABLE "Translation" ADD CONSTRAINT "Translation_timerID_fkey" FOREIGN KEY ("timerID") REFERENCES "Timer"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Translation" ADD CONSTRAINT "Translation_timerID_fkey" FOREIGN KEY ("timerID") REFERENCES "Timer"("_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "CountDownToDateTimerType" ADD CONSTRAINT "CountDownToDateTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "CountDownToDateTimerType" ADD CONSTRAINT "CountDownToDateTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "FixedMinTimerType" ADD CONSTRAINT "FixedMinTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "FixedMinTimerType" ADD CONSTRAINT "FixedMinTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "DailyRecurringTimerType" ADD CONSTRAINT "DailyRecurringTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "DailyRecurringTimerType" ADD CONSTRAINT "DailyRecurringTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "CartPageTimerType" ADD CONSTRAINT "CartPageTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "CartPageTimerType" ADD CONSTRAINT "CartPageTimerType_timerId_fkey" FOREIGN KEY ("timerId") REFERENCES "Timer"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Timer" ADD CONSTRAINT "Timer_timerLabelId_fkey" FOREIGN KEY ("timerLabelId") REFERENCES "TimerLabel"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Timer" ADD CONSTRAINT "Timer_timerLabelId_fkey" FOREIGN KEY ("timerLabelId") REFERENCES "TimerLabel"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Timer" ADD CONSTRAINT "Timer_timerDesignId_fkey" FOREIGN KEY ("timerDesignId") REFERENCES "TimerDesign"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Timer" ADD CONSTRAINT "Timer_timerStyleId_fkey" FOREIGN KEY ("timerStyleId") REFERENCES "TimerStyle"("_id") ON DELETE RESTRICT ON UPDATE CASCADE;

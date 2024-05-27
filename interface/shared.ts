@@ -1,3 +1,6 @@
+import type { TabProps } from "@shopify/polaris";
+import type { TimerStyle, Translation } from "./timer";
+
 export enum CountryCode {
   "AF" = "Afghanistan",
   "AX" = "Aland Islands",
@@ -294,3 +297,170 @@ export enum OnceEndsTimer {
   "Show Custom Title" = "show-custom-title",
   "Do Nothing" = "do-nothing",
 }
+export type OnceEndsTimerValue =
+  | "unpublish"
+  | "show-custom-title"
+  | "do-nothing";
+
+export enum DaysOfWeeks {
+  "Sunday" = 0,
+  "Monday" = 1,
+  "Tuesday" = 2,
+  "Wednesday" = 3,
+  "Thursday" = 4,
+  "Friday" = 5,
+  "Saturday" = 6,
+}
+
+export enum ReccuringTimerEndsOptions {
+  "Never Ends" = "never",
+  "Specific Date" = "specific-date",
+}
+
+export enum ReccuringTimerStartOptions {
+  "Today" = "today",
+  "Specific Date" = "specific-date",
+}
+
+export enum TimerStyleFontOptions {
+  "Helvetica" = "helvetica",
+  "Tahoma" = "tahoma",
+  "Trebuchet MS" = "trebuchet-ms",
+  "Times New Roman" = "times-new-roman",
+  "Georgia" = "georgia",
+  "Garamond" = "garamond",
+  "Courier New" = "courier-new",
+}
+
+type IAppDefaultData = {
+  tabs: TabProps[];
+  languageOptions: {
+    label: string;
+    value: keyof typeof SupportedTranslationLanguage;
+  }[];
+  onceTimerEndsOptions: {
+    label: keyof typeof OnceEndsTimer;
+    value: OnceEndsTimerValue;
+  }[];
+  daysOfWeekOptions: { label: string; value: number }[];
+  timerTemplateOptions: {
+    label: string;
+    value: keyof typeof TimerTemplate;
+  }[];
+  recurringTimerEndsOptions: {
+    label: keyof typeof ReccuringTimerEndsOptions;
+    value: string;
+  }[];
+  recurringTimerStartOptions: {
+    value: string;
+    label: keyof typeof ReccuringTimerStartOptions;
+  }[];
+  defaultTranslationLanguageState: Translation;
+  style: TimerStyle;
+  timerFontOptions: {
+    value: string;
+    label: keyof typeof TimerStyleFontOptions;
+  }[];
+};
+
+export const AppStaticData: IAppDefaultData = {
+  tabs: [
+    {
+      id: "content",
+      content: "Content",
+      accessibilityLabel: "set the content of the timer",
+      panelID: "timer-content",
+    },
+    {
+      id: "style",
+      content: "Style",
+      accessibilityLabel: "set the style of the timer",
+      panelID: "timer-style",
+    },
+    {
+      id: "placement",
+      content: "Placement",
+      accessibilityLabel: "set the placement of the timer",
+      panelID: "timer-placement",
+      measuring: true,
+    },
+  ],
+  languageOptions: Object.entries(SupportedTranslationLanguage).map(
+    ([key, value]) => ({
+      value: key as keyof typeof SupportedTranslationLanguage,
+      label: value,
+    }),
+  ),
+  onceTimerEndsOptions: Object.entries(OnceEndsTimer).map(([key, value]) => ({
+    label: key as keyof typeof OnceEndsTimer,
+    value: value as OnceEndsTimerValue,
+  })),
+  daysOfWeekOptions: Object.keys(DaysOfWeeks)
+    .filter((key) => !isNaN(Number(DaysOfWeeks[key as any])))
+    .map((key) => ({
+      label: key,
+      value: DaysOfWeeks[key as keyof typeof DaysOfWeeks] as number,
+    })),
+  recurringTimerStartOptions: Object.entries(ReccuringTimerStartOptions).map(
+    ([key, value]) => ({
+      label: key as keyof typeof ReccuringTimerStartOptions,
+      value: value,
+    }),
+  ),
+  recurringTimerEndsOptions: Object.entries(ReccuringTimerEndsOptions).map(
+    ([key, value]) => ({
+      label: key as keyof typeof ReccuringTimerEndsOptions,
+      value: value,
+    }),
+  ),
+  defaultTranslationLanguageState: {
+    language: "en",
+    title: "",
+    subHeading: "",
+    timerLabel: {
+      day: "Days",
+      hour: "Hrs",
+      minute: "Mins",
+      second: "Secs",
+    },
+  },
+  style: {
+    cardStyle: {
+      borderColor: "red",
+      borderRadius: 10,
+      borderSize: 1,
+      cardBackgroundGradientAngle: "45deg",
+      cardBackgroundGradientEnd: "red",
+      cardBackgroundGradientStart: "blue",
+      isGradiantBackground: true,
+      cardBackgroundColor: "#ffffff",
+      insideBottom: 10,
+      insideTop: 10,
+      outsideBottom: 10,
+      outsideTop: 10,
+    },
+    template: "custom",
+    typoGraphy: {
+      font: "Arial",
+      titleColor: "red",
+      titleSize: 10,
+      timerColor: "red",
+      timerLegendColor: "red",
+      timerLegendSize: 10,
+      timerSize: 10,
+      subHeadingColor: "red",
+      subHeadingSize: 10,
+    },
+    position: "",
+  },
+  timerTemplateOptions: Object.entries(TimerTemplate).map(([key, value]) => ({
+    value: key as keyof typeof TimerTemplate,
+    label: value,
+  })),
+  timerFontOptions: Object.entries(TimerStyleFontOptions).map(
+    ([key, value]) => ({
+      label: key as keyof typeof TimerStyleFontOptions,
+      value: value,
+    }),
+  ),
+};

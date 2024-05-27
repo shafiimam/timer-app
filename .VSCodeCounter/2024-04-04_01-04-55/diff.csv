@@ -1,0 +1,17 @@
+"filename", "language", "TypeScript", "JavaScript", "JSON", "Ignore", "JSON with Comments", "SQL", "Prisma", "Docker", "Markdown", "comment", "blank", "total"
+"e:\Work\timer-app-ts\.eslintrc.cjs", "JavaScript", 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 1, 14
+"e:\Work\timer-app-ts\.graphqlrc.ts", "TypeScript", 34, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 42
+"e:\Work\timer-app-ts\.prettierignore", "Ignore", 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 1, 14
+"e:\Work\timer-app-ts\Dockerfile", "Docker", 0, 0, 0, 0, 0, 0, 0, 10, 0, 3, 7, 20
+"e:\Work\timer-app-ts\README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 184, 0, 98, 282
+"e:\Work\timer-app-ts\env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 3
+"e:\Work\timer-app-ts\interface\shared.ts", "TypeScript", 305, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 311
+"e:\Work\timer-app-ts\interface\timer.ts", "TypeScript", 103, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 113
+"e:\Work\timer-app-ts\package.json", "JSON", 0, 0, 66, 0, 0, 0, 0, 0, 0, 0, 1, 67
+"e:\Work\timer-app-ts\prisma\migrations\20240331192941_add\migration.sql", "SQL", 0, 0, 0, 0, 0, 146, 0, 0, 0, 24, 34, 204
+"e:\Work\timer-app-ts\prisma\migrations\20240331193020_add\migration.sql", "SQL", 0, 0, 0, 0, 0, 54, 0, 0, 0, 59, 24, 137
+"e:\Work\timer-app-ts\prisma\migrations\20240401091907_update\migration.sql", "SQL", 0, 0, 0, 0, 0, 3, 0, 0, 0, 10, 3, 16
+"e:\Work\timer-app-ts\prisma\schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 145, 0, 0, 2, 14, 161
+"e:\Work\timer-app-ts\tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 1, 27
+"e:\Work\timer-app-ts\vite.config.ts", "TypeScript", 47, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 56
+"Total", "-", 489, 12, 66, 13, 26, 203, 145, 10, 184, 106, 213, 1467

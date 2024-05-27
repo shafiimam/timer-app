@@ -1,19 +1,6 @@
-import { Box, Icon, InlineStack, Text } from "@shopify/polaris";
+import { Box, Icon, InlineError, InlineStack, Text } from "@shopify/polaris";
 import { AlertDiamondIcon } from "@shopify/polaris-icons";
 
-export default function InputError({
-  message,
-}: {
-  message: String;
-}): JSX.Element {
-  return (
-    <InlineStack as="span" align="start" gap={"100"}>
-      <Box>
-        <Icon source={AlertDiamondIcon} tone="critical" />
-      </Box>
-      <Text as="span" tone="critical">
-        {message}
-      </Text>
-    </InlineStack>
-  );
+export default function InputError({ message }: { message: string }): JSX.Element {
+  return <InlineError message={message} fieldID="myFieldID" />;
 }

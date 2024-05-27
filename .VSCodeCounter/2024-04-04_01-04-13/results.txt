@@ -1,0 +1,74 @@
+Date : 2024-04-04 01:04:13
+Directory : e:\Work\timer-app-ts\app
+Total : 32 files,  2205 codes, 19 comments, 132 blanks, all 2356 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| TypeScript JSX |         19 |      1,708 |          7 |         92 |      1,807 |
+| TypeScript     |          7 |        383 |         12 |         23 |        418 |
+| CSS            |          2 |         62 |          0 |         13 |         75 |
+| XML            |          4 |         52 |          0 |          4 |         56 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                  |         32 |      2,205 |         19 |        132 |      2,356 |
+| . (Files)                                                          |          5 |        145 |          0 |         17 |        162 |
+| assets                                                             |          4 |         52 |          0 |          4 |         56 |
+| components                                                         |          6 |        953 |          5 |         30 |        988 |
+| components (Files)                                                 |          3 |         94 |          0 |         10 |        104 |
+| components\Timer                                                   |          1 |        832 |          5 |         16 |        853 |
+| components\UI                                                      |          2 |         27 |          0 |          4 |         31 |
+| data                                                               |          1 |          0 |          0 |          1 |          1 |
+| redux                                                              |          3 |        323 |         12 |         13 |        348 |
+| redux (Files)                                                      |          2 |         14 |          4 |          5 |         23 |
+| redux\features                                                     |          1 |        309 |          8 |          8 |        325 |
+| routes                                                             |         12 |        732 |          2 |         66 |        800 |
+| routes (Files)                                                     |          8 |        547 |          2 |         33 |        582 |
+| routes\_index                                                      |          2 |        113 |          0 |         20 |        133 |
+| routes\auth.login                                                  |          2 |         72 |          0 |         13 |         85 |
+| styles                                                             |          1 |          0 |          0 |          1 |          1 |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                           | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| e:\Work\timer-app-ts\app\assets\bar.svg                            | XML            |         15 |          0 |          1 |         16 |
+| e:\Work\timer-app-ts\app\assets\cart_page.svg                      | XML            |          9 |          0 |          1 |         10 |
+| e:\Work\timer-app-ts\app\assets\landing_page.svg                   | XML            |         13 |          0 |          1 |         14 |
+| e:\Work\timer-app-ts\app\assets\product_page.svg                   | XML            |         15 |          0 |          1 |         16 |
+| e:\Work\timer-app-ts\app\components\ProductTimer.client.tsx        | TypeScript JSX |         83 |          0 |          7 |         90 |
+| e:\Work\timer-app-ts\app\components\ProductTimerSkeleton.tsx       | TypeScript JSX |         11 |          0 |          2 |         13 |
+| e:\Work\timer-app-ts\app\components\TimerTranslation.tsx           | TypeScript JSX |          0 |          0 |          1 |          1 |
+| e:\Work\timer-app-ts\app\components\Timer\TimerContentSettings.tsx | TypeScript JSX |        832 |          5 |         16 |        853 |
+| e:\Work\timer-app-ts\app\components\UI\InputError.tsx              | TypeScript JSX |          5 |          0 |          2 |          7 |
+| e:\Work\timer-app-ts\app\components\UI\Label.tsx                   | TypeScript JSX |         22 |          0 |          2 |         24 |
+| e:\Work\timer-app-ts\app\data\shared.ts                            | TypeScript     |          0 |          0 |          1 |          1 |
+| e:\Work\timer-app-ts\app\db.server.ts                              | TypeScript     |         11 |          0 |          5 |         16 |
+| e:\Work\timer-app-ts\app\entry.server.tsx                          | TypeScript JSX |         53 |          0 |          6 |         59 |
+| e:\Work\timer-app-ts\app\globals.d.ts                              | TypeScript     |          1 |          0 |          1 |          2 |
+| e:\Work\timer-app-ts\app\redux\features\timerSlice.ts              | TypeScript     |        309 |          8 |          8 |        325 |
+| e:\Work\timer-app-ts\app\redux\hooks.ts                            | TypeScript     |          5 |          1 |          2 |          8 |
+| e:\Work\timer-app-ts\app\redux\store.ts                            | TypeScript     |          9 |          3 |          3 |         15 |
+| e:\Work\timer-app-ts\app\root.tsx                                  | TypeScript JSX |         32 |          0 |          2 |         34 |
+| e:\Work\timer-app-ts\app\routes\_index\route.tsx                   | TypeScript JSX |         51 |          0 |          8 |         59 |
+| e:\Work\timer-app-ts\app\routes\_index\styles.module.css           | CSS            |         62 |          0 |         12 |         74 |
+| e:\Work\timer-app-ts\app\routes\app._index.tsx                     | TypeScript JSX |        281 |          0 |          8 |        289 |
+| e:\Work\timer-app-ts\app\routes\app.additional.tsx                 | TypeScript JSX |         80 |          0 |          3 |         83 |
+| e:\Work\timer-app-ts\app\routes\app.newTimer.tsx                   | TypeScript JSX |         95 |          0 |          3 |         98 |
+| e:\Work\timer-app-ts\app\routes\app.productTimer.$timerId.tsx      | TypeScript JSX |          5 |          0 |          1 |          6 |
+| e:\Work\timer-app-ts\app\routes\app.productTimer._index.tsx        | TypeScript JSX |         27 |          0 |          1 |         28 |
+| e:\Work\timer-app-ts\app\routes\app.tsx                            | TypeScript JSX |         31 |          1 |          8 |         40 |
+| e:\Work\timer-app-ts\app\routes\auth.$.tsx                         | TypeScript JSX |          6 |          0 |          3 |          9 |
+| e:\Work\timer-app-ts\app\routes\auth.login\error.server.tsx        | TypeScript JSX |         13 |          0 |          4 |         17 |
+| e:\Work\timer-app-ts\app\routes\auth.login\route.tsx               | TypeScript JSX |         59 |          0 |          9 |         68 |
+| e:\Work\timer-app-ts\app\routes\webhooks.tsx                       | TypeScript JSX |         22 |          1 |          6 |         29 |
+| e:\Work\timer-app-ts\app\shopify.server.ts                         | TypeScript     |         48 |          0 |          3 |         51 |
+| e:\Work\timer-app-ts\app\styles\index.css                          | CSS            |          0 |          0 |          1 |          1 |
+| Total                                                              |                |      2,205 |         19 |        132 |      2,356 |
++--------------------------------------------------------------------+----------------+------------+------------+------------+------------+

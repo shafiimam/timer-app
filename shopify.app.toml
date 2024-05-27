@@ -3,7 +3,7 @@
 client_id = "0aeb348f2fd5c8f0d33cd471258669b0"
 name = "timer-app"
 handle = "timer-app-14"
-application_url = "https://saying-rp-yamaha-fallen.trycloudflare.com"
+application_url = "https://marion-fits-offering-guaranteed.trycloudflare.com"
 embedded = true
 
 [build]
@@ -12,13 +12,13 @@ dev_store_url = "in10sitydevstore.myshopify.com"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = ""
+scopes = "read_discounts,read_price_rules"
 
 [auth]
 redirect_urls = [
-  "https://saying-rp-yamaha-fallen.trycloudflare.com/auth/callback",
-  "https://saying-rp-yamaha-fallen.trycloudflare.com/auth/shopify/callback",
-  "https://saying-rp-yamaha-fallen.trycloudflare.com/api/auth/callback"
+  "https://marion-fits-offering-guaranteed.trycloudflare.com/auth/callback",
+  "https://marion-fits-offering-guaranteed.trycloudflare.com/auth/shopify/callback",
+  "https://marion-fits-offering-guaranteed.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

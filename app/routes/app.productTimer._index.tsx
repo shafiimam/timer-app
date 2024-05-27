@@ -9,13 +9,18 @@ import {
   Spinner,
   Text,
 } from "@shopify/polaris";
-import { useNavigate } from "@remix-run/react";
 import { ClientOnly } from "remix-utils/client-only";
 import NewProductTimer from "../components/ProductTimer.client";
+import { Provider } from "react-redux";
+import { store } from "~/redux/store";
 export default function NewTimerPage() {
-  const navigate = useNavigate();
-
   return (
-    <ClientOnly fallback={<Spinner />}>{() => <NewProductTimer />}</ClientOnly>
+    <ClientOnly fallback={<Spinner />}>
+      {() => (
+        <Provider store={store}>
+          <NewProductTimer />
+        </Provider>
+      )}
+    </ClientOnly>
   );
 }
